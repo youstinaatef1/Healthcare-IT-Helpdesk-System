@@ -20,15 +20,16 @@ const addTicket = async(req, res) =>{
         if (!checkAdmin) {
            return res.status(404).json({msg: "User Not Found"}); 
         }
-        //Check Role
-        if (checkAdmin.role !== "admin") return res.json({msg: "Access Denied"});
-        // Create New Ticket
+         // Create New Ticket
         const ticket = await Ticket.create(value);
         //Responce
         res.status(201).json({
             msg: "Done Create Ticket",
             data: ticket,
         });
+        //Check Role
+        if (checkAdmin.role !== "admin") return res.json({msg: "Access Denied"});
+       
     }
     catch(error){
         res.status(500).json({ msg: "Server Error" });

@@ -78,7 +78,7 @@ const login = async (req, res, next) => {
         id: user._id,
         role: user.role,
       },
-      process.env.JWT_SK || "default_secret",
+      process.env.JWT_SECRET,
       {
         expiresIn: "1d",
       }
