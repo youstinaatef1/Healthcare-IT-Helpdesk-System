@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Input from "../../Components/Ui/Input";
 import Button from "../../Components/Ui/Button";
-import image from "../../assets/images (1).png";
+import img from "../../assets/images (1).png";
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -23,7 +23,7 @@ function Login() {
 
         {/* Logo */}
         <div className="text-center mb-4">
-          <img src={image} alt="logo" style={{ width: "80px" }} />
+          <img src={img} alt="logo" style={{ width: "80px" }} />
           <h4 className="mt-2">Ministry of Health</h4>
           <small className="text-muted">
             Healthcare IT Helpdesk System
