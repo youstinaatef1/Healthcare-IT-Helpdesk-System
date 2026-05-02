@@ -3,13 +3,18 @@ const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
 const bcrypt = require("bcrypt");
-mongoose.connect("mongodb://127.0.0.1:27017/Healthcare")
-.then(() =>{
-    console.log("connected Successfully");
-})
-.catch((error) =>{
-    console.log(error);
-})
+
+
+async function dbConnection(){
+    try {
+        await mongoose.connect(process.env.MONGODB_URI);
+        console.log("Connected to MongoDB");
+    } catch (error) {
+        console.error("Error connecting to MongoDB:", error);
+    }
+}
+dbConnection();
+
 app.use(express.json());
 const User = require("./models/User");
 const Ticket = require("./models/Ticket");
@@ -22,6 +27,8 @@ app.use("/api", authRoutes);
 app.use("/api", ticketRoutes);
 app.use("/api", departmentRoutes);
 const port = process.env.PORT || 3000;
+
+
 app.listen(port, () => {
     console.log(`Server is Running ${port}`);
 });
