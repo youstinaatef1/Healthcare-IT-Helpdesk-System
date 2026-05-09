@@ -1,0 +1,46 @@
+.sidebar {
+  width: 240px;
+  height: 100vh;
+
+  background-color: #0f172a; /* dark navy */
+  color: white;
+
+  position: fixed;
+  left: 0;
+  top: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 20px;
+}
+
+.logo {
+  margin-bottom: 40px;
+}
+
+.logo h2 {
+  font-size: 20px;
+  color: #38bdf8;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.nav a {
+  color: #cbd5e1;
+  text-decoration: none;
+
+  padding: 10px;
+  border-radius: 8px;
+
+  transition: 0.2s;
+}
+
+.nav a:hover {
+  background-color: #1e293b;
+  color: white;
+}

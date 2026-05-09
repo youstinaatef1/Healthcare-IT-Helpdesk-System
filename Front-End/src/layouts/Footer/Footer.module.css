@@ -1,0 +1,47 @@
+.footer {
+  height: 60px;
+
+  background-color: white;
+
+  border-top: 1px solid #e5e7eb;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 25px;
+
+  font-size: 14px;
+
+  color: #4b5563;
+}
+
+/* LEFT */
+
+.left p {
+  margin: 0;
+}
+
+/* CENTER */
+
+.center {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.status {
+  width: 10px;
+  height: 10px;
+
+  border-radius: 50%;
+
+  background-color: #22c55e;
+}
+
+/* RIGHT */
+
+.right p {
+  margin: 0;
+  font-weight: 600;
+}
