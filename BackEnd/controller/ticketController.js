@@ -36,4 +36,40 @@ const addTicket = async(req, res) =>{
 
     }
 }
-module.exports = {addTicket};
+const getAllTicket = async(req, res) =>{
+    try {
+        const userId = req.user.id;
+        const ticket = await Ticket.find({userId: userId});
+        res.json({
+            data: ticket
+        });
+        
+    } catch (error) {
+        console.log(error);
+    }
+} 
+const getSingleTicket = async(req, res) =>{
+    try {
+        const ticketId = req.params.id;
+        const ticket = await Ticket.findById(ticketId);
+        if(!ticket) {
+            return res.status(404).json({
+                message: "Ticket not found"
+            });
+        }
+        res.json({
+            data: ticket
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            message: "Server error"
+        });
+    }
+}
+
+module.exports = {
+    addTicket, 
+    getAllTicket,
+    getSingleTicket,
+};

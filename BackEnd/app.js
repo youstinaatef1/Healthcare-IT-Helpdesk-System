@@ -16,11 +16,13 @@ const Ticket = require("./models/Ticket");
 const authRoutes = require("./routes/authRoutes");
 const ticketRoutes = require("./routes/ticketRoutes");
 const departmentRoutes = require("./routes/departmentRoutes");
+const messageRoutes = require("./routes/messageRoutes");
 
 app.use("/api", authRoutes);
 
 app.use("/api", ticketRoutes);
 app.use("/api", departmentRoutes);
+app.use("/api", messageRoutes);
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
     console.log(`Server is Running ${port}`);
