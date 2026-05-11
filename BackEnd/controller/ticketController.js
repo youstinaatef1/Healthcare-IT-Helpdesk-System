@@ -67,9 +67,99 @@ const getSingleTicket = async(req, res) =>{
         });
     }
 }
+const updateTicketStatus = async (req, res) => {
+  try {
+    const { error, value } = statusUpdateSchema.validate(req.body);
 
+    if (error) {
+      return res.status(400).json({
+        msg: error.details.map((err) => err.message),
+      });
+    }
+
+    const userRole = req.user.role;
+
+    if (userRole !== "admin" && userRole !== "it") {
+      return res.status(403).json({
+        msg: "Access Denied: Only Admin or IT can update status",
+      });
+    }
+
+    const ticket = await Ticket.findByIdAndUpdate(
+      req.params.id,
+      {
+        status: value.status,
+      },
+      {
+        new: true,
+      }
+    );
+
+    if (!ticket) {
+      return res.status(404).json({
+        msg: "Ticket not found",
+      });
+    }
+
+    res.status(200).json({
+      msg: "Ticket status updated successfully",
+      data: ticket,
+    });
+  } catch (error) {
+    console.error(error);
+
+    if (error.kind === "ObjectId") {
+      return res.status(400).json({
+        msg: "Invalid Ticket ID",
+      });
+    }
+
+    res.status(500).json({
+      msg: "Server Error",
+    });
+  }
+};
+
+
+const deleteTicket = async (req, res) => {
+  try {
+    const userRole = req.user.role;
+
+    if (userRole !== "admin" && userRole !== "it") {
+      return res.status(403).json({
+        msg: "Access Denied: Only Admin or IT can delete tickets",
+      });
+    }
+
+    const ticket = await Ticket.findByIdAndDelete(req.params.id);
+
+    if (!ticket) {
+      return res.status(404).json({
+        msg: "Ticket not found",
+      });
+    }
+
+    res.status(200).json({
+      msg: "Ticket deleted successfully",
+    });
+  } catch (error) {
+    console.error(error);
+
+    if (error.kind === "ObjectId") {
+      return res.status(400).json({
+        msg: "Invalid Ticket ID",
+      });
+    }
+
+    res.status(500).json({
+      msg: "Server Error",
+    });
+  }
+};
 module.exports = {
     addTicket, 
     getAllTicket,
     getSingleTicket,
+    updateTicketStatus,
+    deleteTicket
 };

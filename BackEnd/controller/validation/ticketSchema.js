@@ -6,4 +6,7 @@ const ticketSchema = Joi.object({
     priority: Joi.string().valid("low","High","medium", "critical").default("low"),
     status: Joi.string().valid("InProgress", "Investigating", "Queued", "Resolved").default("InProgress")
 });
+const statusUpdateSchema = Joi.object({
+    status: Joi.string().valid("InProgress", "Investigating", "Queued", "Resolved").required()
+});
 module.exports = ticketSchema
