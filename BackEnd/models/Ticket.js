@@ -1,6 +1,6 @@
 //require mongoose
 const mongoose = require("mongoose");
-const { type } = require("../controller/validation/ticketSchema");
+
 // create schema
 const ticketSchema = new mongoose.Schema({
     department:{

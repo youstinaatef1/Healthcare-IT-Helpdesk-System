@@ -9,4 +9,4 @@ const ticketSchema = Joi.object({
 const statusUpdateSchema = Joi.object({
     status: Joi.string().valid("InProgress", "Investigating", "Queued", "Resolved").required()
 });
-module.exports = ticketSchema
+module.exports = { ticketSchema, statusUpdateSchema };

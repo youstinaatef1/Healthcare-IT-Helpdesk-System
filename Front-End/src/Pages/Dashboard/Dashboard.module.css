@@ -67,3 +67,112 @@
 .row:last-child {
   border-bottom: none;
 }
+
+/* EMERGENCY */
+.emergencySection {
+  background: #fff5f5;
+  border: 1.5px solid #fca5a5;
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin-top: 10px;
+}
+
+.emergencyHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.emergencyDot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #ef4444;
+  animation: pulse 1.2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(1.4); }
+}
+
+.emergencyTitle {
+  font-size: 16px;
+  font-weight: 700;
+  color: #b91c1c;
+  margin: 0;
+}
+
+.emergencyTable {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.emergencyRow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #fee2e2;
+  border: 1px solid #fca5a5;
+  border-radius: 8px;
+  padding: 10px 14px;
+}
+
+.emergencyId {
+  font-weight: 700;
+  color: #991b1b;
+  min-width: 70px;
+}
+
+.emergencySubject {
+  flex: 1;
+  color: #1f2937;
+  font-weight: 500;
+}
+
+.emergencyDept {
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.emergencyBadge {
+  background: #ef4444;
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* CHARTS */
+.chartsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 10px;
+}
+
+.chartCard {
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.chartTitle {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 15px;
+  color: #111827;
+}
+
+@media (max-width: 768px) {
+  .chartsGrid {
+    grid-template-columns: 1fr;
+  }
+}

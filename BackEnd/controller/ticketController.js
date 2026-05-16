@@ -1,6 +1,6 @@
 const User = require("../models/User");
 const Ticket = require("../models/Ticket");
-const ticketSchema = require("./validation/ticketSchema");
+const { ticketSchema, statusUpdateSchema } = require("./validation/ticketSchema");
 const addTicket = async(req, res) =>{
     try{
         const {error, value} = ticketSchema.validate(req.body,{
@@ -21,7 +21,7 @@ const addTicket = async(req, res) =>{
            return res.status(404).json({msg: "User Not Found"}); 
         }
          // Create New Ticket
-        const ticket = await Ticket.create(value);
+        const ticket = await Ticket.create({ ...value, userId });
         //Responce
         res.status(201).json({
             msg: "Done Create Ticket",
