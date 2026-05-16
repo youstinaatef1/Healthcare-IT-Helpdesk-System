@@ -2,6 +2,7 @@ import { useState } from "react";
 import Input from "../../Components/Ui/Input";
 import Button from "../../Components/Ui/Button";
 import img from "../../assets/images (1).png";
+import styles from "./Login.module.css";
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -13,11 +14,11 @@ function Login() {
   };
 
   return (
-    <div className="d-flex justify-content-center align-items-center vh-100 bg-light">
+    <div className={`${styles.parent} d-flex justify-content-center align-items-center vh-100 bg-light`}>
 
       <form
         onSubmit={handleLogin}
-        className="bg-white p-5 rounded shadow w-100"
+        className={`${styles.form}  p-5 rounded shadow w-100`}
         style={{ maxWidth: "400px" }}
       >
 
