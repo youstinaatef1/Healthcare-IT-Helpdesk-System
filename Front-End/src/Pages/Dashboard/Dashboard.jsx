@@ -152,7 +152,7 @@
 import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import styles from "./Dashboard.module.css";
-
+import Login from "../Login/Login";
 import User from "../Users/Users";
 import Ticket from "../Tickets/Tickets";
 
@@ -190,7 +190,7 @@ function Dashboard() {
 
   return (
     <Routes>
-
+<Route path="/add" element = {<Login />}/>
       {/* ───────── HOME DASHBOARD ───────── */}
       <Route
         path="/"
